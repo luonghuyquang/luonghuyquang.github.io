@@ -64,7 +64,7 @@ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32
       background-color: #D4A59A; /* Set a background color */
       color: #5C2018; /* Text color */
       cursor: pointer; /* Add a hover effect */
-      padding: 15px; /* Some padding */
+      padding: 5px; /* Some padding */
       border-radius: 10px; /* Rounded corners */
 }
 
