@@ -30,6 +30,9 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             font-size: medium;
         }
+        code {
+            white-space: pre-line;
+        }
     </style>
 </head>
 
@@ -42,10 +45,11 @@
             HAMK
         </div>
         <div class="code-container">
-            <code>print("HAMK")<br>
-                print("1")<br>
-                print("2")<br>
-                print("3")</code>
+            <code>print("HAMK")
+                print("1")
+                print("2")
+                print("3")
+            </code>
         </div>
     </div>
     This is the second code.
@@ -56,11 +60,30 @@
             Computer Applications
         </div>
         <div class="code-container">
-            <code>print("Computer Applications")<br>
-                print("4")</code>
+            <code>print("Computer Applications")
+                print("4")
+            </code>
         </div>
     </div>
     Happy Coding!
+    <div class="window">
+        <div class="title-bar">
+            <!--Put the js-enabled button in the title bar-->
+            <button onclick="copyCode(this)">Copy Code</button>
+            Computer Applications
+        </div>
+        <div class="code-container">
+            <code>code --install-extension ms-vscode.powershell
+                code --install-extension vsls-contrib.gistfs
+                code --install-extension hashicorp.terraform
+                code --install-extension ms-vscode-remote.remote-containers
+                code --install-extension ms-azuretools.vscode-docker
+                code --install-extension ms-vscode-remote.vscode-remote-extensionpack
+                code --install-extension GitHub.copilot-nightly
+                code --install-extension GitHub.copilot-labs
+            </code>
+        </div>
+    </div>
     <script>
         function copyCode(button) {
             // Traverse up the DOM to find the parent .window div
