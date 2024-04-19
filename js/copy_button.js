@@ -4,18 +4,30 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Loop through each code block
     codeBlocks.forEach(function(codeBlock) {
+        // Create a container div for positioning
+        var container = document.createElement("div");
+        container.style.position = "relative";
+        container.style.width = "fit-content";
+        
         // Create a button element
         var copyButton = document.createElement("button");
         copyButton.className = "copy-button";
         copyButton.textContent = "Copy code";
+        copyButton.style.position = "absolute";
+        copyButton.style.top = "0";
+        copyButton.style.right = "0";
+        
+        // Append the button to the container
+        container.appendChild(copyButton);
 
-        // Append the button to the code block
-        codeBlock.parentNode.insertBefore(copyButton, codeBlock);
+        // Append the container to the code block's parent
+        codeBlock.parentNode.insertBefore(container, codeBlock);
+        container.appendChild(codeBlock);
 
         // Add click event listener to the button
         copyButton.addEventListener("click", function() {
             // Get the text content of the code block
-            var codeText = codeBlock.textContent.trim(); // Remove leading and trailing whitespace
+            var codeText = codeBlock.textContent;
 
             // Create a temporary textarea element
             var textarea = document.createElement("textarea");
@@ -40,10 +52,5 @@ document.addEventListener("DOMContentLoaded", function() {
                 copyButton.textContent = "Copy code";
             }, 1000); // Reset after 1 second
         });
-
-        // Position the copy button in the top right corner of the code block
-        copyButton.style.position = "absolute";
-        copyButton.style.top = "0";
-        copyButton.style.right = "0";
     });
 });
