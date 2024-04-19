@@ -1,17 +1,12 @@
 .clipboard-container {
-  position: relative;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+}
+
+.code-text {
+  flex-grow: 1;
 }
 
 .clipboard-icon {
-  position: absolute;
-  top: 5px;
-  right: 5px;
   cursor: pointer;
-  z-index: 1;
-}
-
-.clipboard-container code {
-  position: relative;
-  z-index: 0;
 }

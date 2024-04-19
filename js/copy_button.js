@@ -7,24 +7,22 @@ document.addEventListener('DOMContentLoaded', function () {
   for (var i = 0; i < codeElements.length; i++) {
     var codeElement = codeElements[i];
 
-    // Create clipboard icon element
-    var clipboardIcon = document.createElement("i");
-    clipboardIcon.className = "fa fa-clipboard clipboard-icon";
-    clipboardIcon.title = "Copy to clipboard";
-    clipboardIcon.style.position = "absolute";
-    clipboardIcon.style.top = "5px";
-    clipboardIcon.style.right = "5px";
-    clipboardIcon.style.cursor = "pointer";
-    clipboardIcon.style.zIndex = "1";
-
     // Create container for positioning
     var container = document.createElement("div");
     container.className = "clipboard-container";
-    container.style.position = "relative";
-    container.style.display = "inline-block";
 
-    // Append the clipboard icon and code element to the container
-    container.appendChild(codeElement.cloneNode(true));
+    // Create code text element
+    var codeText = document.createElement("span");
+    codeText.className = "code-text";
+    codeText.textContent = codeElement.textContent;
+
+    // Create clipboard icon element
+    var clipboardIcon = document.createElement("i");
+    clipboardIcon.className = "far fa-clipboard clipboard-icon";
+    clipboardIcon.title = "Copy to clipboard";
+
+    // Append the code text and clipboard icon to the container
+    container.appendChild(codeText);
     container.appendChild(clipboardIcon);
 
     // Replace the <code> element with the container
@@ -33,10 +31,14 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initialize Clipboard.js for the current clipboard icon
     new ClipboardJS(clipboardIcon, {
       target: function (trigger) {
-        return trigger.previousSibling;
+        return trigger.previousElementSibling;
       }
     }).on("success", function (e) {
       e.clearSelection(); // Clear the selection after successful copy
+      e.trigger.className = "far fa-check-circle clipboard-icon";
+      setTimeout(function () {
+        e.trigger.className = "far fa-clipboard clipboard-icon";
+      }, 1000); // Reset the icon after 1 second
     });
   }
 });
