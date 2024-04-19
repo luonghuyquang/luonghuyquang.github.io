@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // Create a button element
         var copyButton = document.createElement("button");
         copyButton.className = "copy-button";
-        copyButton.textContent = "Copy";
+        copyButton.textContent = "Copy code";
         copyButton.style.position = "absolute";
         copyButton.style.top = "0";
         copyButton.style.right = "0";
