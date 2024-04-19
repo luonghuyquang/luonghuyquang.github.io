@@ -1,12 +1,11 @@
-.clipboard-container {
-  display: flex;
-  align-items: center;
-}
-
-.code-text {
-  flex-grow: 1;
-}
-
-.clipboard-icon {
+.copy-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  background: none;
+  border: none;
+  font-size: 1em;
+  padding: 0.5em;
   cursor: pointer;
 }

@@ -1,49 +1,56 @@
 // Execute the code when the DOM is ready
 document.addEventListener('DOMContentLoaded', function () {
-  // Get all <code> elements
-  var codeElements = document.getElementsByTagName("code");
+  // Find all code blocks in the document
+  var codeBlocks = document.querySelectorAll("pre > code");
 
-  // Loop through each <code> element
-  for (var i = 0; i < codeElements.length; i++) {
-    var codeElement = codeElements[i];
-
-    // Create container for positioning
+  // Loop through each code block
+  codeBlocks.forEach(function (codeBlock) {
+    // Create a container div for positioning
     var container = document.createElement("div");
-    container.className = "clipboard-container";
+    container.style.position = "relative";
+    container.style.paddingTop = "2em"; // Adjust padding to create space for the button
 
-    // Create code text element
-    var codeText = document.createElement("span");
-    codeText.className = "code-text";
-    codeText.textContent = codeElement.textContent;
+    // Append the container before the code block
+    codeBlock.parentNode.insertBefore(container, codeBlock);
 
-    // Check if the code element has a copyable class
-    if (codeElement.classList.contains("copyable")) {
-      // Create clipboard icon element
-      var clipboardIcon = document.createElement("i");
-      clipboardIcon.className = "far fa-clipboard clipboard-icon";
-      clipboardIcon.title = "Copy to clipboard";
+    // Append the code block to the container
+    container.appendChild(codeBlock);
 
-      // Append the clipboard icon to the container
-      container.appendChild(clipboardIcon);
+    // Create a button element
+    var copyButton = document.createElement("button");
+    copyButton.className = "copy-button";
+    copyButton.innerHTML = '<i class="fa fa-clipboard"></i>'; // Add the fa fa-clipboard icon
 
-      // Initialize Clipboard.js for the current clipboard icon
-      new ClipboardJS(clipboardIcon, {
-        target: function (trigger) {
-          return trigger.previousElementSibling;
-        }
-      }).on("success", function (e) {
-        e.clearSelection(); // Clear the selection after successful copy
-        e.trigger.className = "far fa-check-circle clipboard-icon";
-        setTimeout(function () {
-          e.trigger.className = "far fa-clipboard clipboard-icon";
-        }, 1000); // Reset the icon after 1 second
-      });
-    }
+    // Append the button to the container
+    container.appendChild(copyButton);
 
-    // Append the code text to the container
-    container.appendChild(codeText);
+    // Add click event listener to the button
+    copyButton.addEventListener("click", function () {
+      // Get the text content of the code block
+      var codeText = codeBlock.textContent.trim();
 
-    // Replace the <code> element with the container
-    codeElement.parentNode.replaceChild(container, codeElement);
-  }
+      // Create a temporary textarea element
+      var textarea = document.createElement("textarea");
+      textarea.value = codeText;
+
+      // Append the textarea to the document body
+      document.body.appendChild(textarea);
+
+      // Select the text inside the textarea
+      textarea.select();
+
+      // Execute the copy command
+      document.execCommand("copy");
+
+      // Remove the temporary textarea
+      document.body.removeChild(textarea);
+
+      // Change button text to indicate successful copy
+      copyButton.innerHTML = '<i class="fa fa-check-circle"></i>';
+      setTimeout(function () {
+        // Reset button text after a short delay
+        copyButton.innerHTML = '<i class="fa fa-clipboard"></i>';
+      }, 1000); // Reset after 1 second
+    });
+  });
 });
