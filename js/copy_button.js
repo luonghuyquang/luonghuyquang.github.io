@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // Create a button element
         var copyButton = document.createElement("button");
         copyButton.className = "copy-button";
-        copyButton.textContent = "Copy code";
+        copyButton.textContent = "Copy";
 
         // Append the button to the code block
         codeBlock.parentNode.insertBefore(copyButton, codeBlock);
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // Add click event listener to the button
         copyButton.addEventListener("click", function() {
             // Get the text content of the code block
-            var codeText = codeBlock.textContent.trim();
+            var codeText = codeBlock.textContent.trim(); // Remove leading and trailing whitespace
 
             // Create a temporary textarea element
             var textarea = document.createElement("textarea");
@@ -36,9 +36,9 @@ document.addEventListener("DOMContentLoaded", function() {
             // Change button text to indicate successful copy
             copyButton.textContent = "Copied!";
             setTimeout(function() {
-                // Reset button text after a second
-                copyButton.textContent = "Copy code";
-            }, 1000); // Reset after 2 seconds
+                // Reset button text after a short delay
+                copyButton.textContent = "Copy";
+            }, 1000); // Reset after 1 seconds
         });
     });
 });
