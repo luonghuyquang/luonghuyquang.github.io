@@ -32,22 +32,21 @@ document.addEventListener("DOMContentLoaded", function() {
             // Get the text content of the code block
             var codeText = codeBlock.textContent.trim();
 
-            // Create a temporary textarea element
-            var textarea = document.createElement("textarea");
-            textarea.value = codeText;
+            // Create a range and selection
+            var range = document.createRange();
+            var selection = window.getSelection();
 
-            // Append the textarea to the document body
-            document.body.appendChild(textarea);
-
-            // Select the text inside the textarea
-            textarea.select();
+            // Select the content of the code block
+            range.selectNodeContents(codeBlock);
+            selection.removeAllRanges(); // Clear previous selections
+            selection.addRange(range);
 
             // Execute the copy command
             document.execCommand("copy");
 
-            // Remove the temporary textarea
-            document.body.removeChild(textarea);
-
+            // Clear the selection
+            selection.removeAllRanges();
+            
             // Change button text to indicate successful copy
             copyButton.textContent = "Copied!";
             setTimeout(function() {
