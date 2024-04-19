@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
         copyButton.textContent = "Copy";
         copyButton.style.position = "absolute";
         copyButton.style.top = "0";
-        copyButton.style.left = "0";
+        copyButton.style.right = "0";
         copyButton.style.zIndex = "1"; // Ensure button is above code block
         
         // Append the button to the container
@@ -52,8 +52,8 @@ document.addEventListener("DOMContentLoaded", function() {
             copyButton.textContent = "Copied!";
             setTimeout(function() {
                 // Reset button text after a short delay
-                copyButton.textContent = "Copy";
-            }, 2000); // Reset after 2 seconds
+                copyButton.textContent = "Copy code";
+            }, 1000); // Reset after 1 second
         });
     });
 });
