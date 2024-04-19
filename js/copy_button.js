@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Alert user when code is copied
     clipboard.on('success', function (e) {
-      alert('Code copied successfully!');
+      alert('successfully!');
       e.clearSelection();
     });
 
