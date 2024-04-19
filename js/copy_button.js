@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // Create a container div for positioning
         var container = document.createElement("div");
         container.style.position = "relative";
-        container.style.display = "inline-block"; // Ensure container wraps around content
+        container.style.display = "inline-flex"; // Ensure container wraps tightly around content
         
         // Append the container before the code block
         codeBlock.parentNode.insertBefore(container, codeBlock);
@@ -21,8 +21,8 @@ document.addEventListener("DOMContentLoaded", function() {
         copyButton.textContent = "Copy code";
         copyButton.style.position = "absolute";
         copyButton.style.top = "0";
-        copyButton.style.right = "0"; // Align button with Right edge of container
-        copyButton.style.marginTop = "1em"; // Adjust vertical margin as needed
+        copyButton.style.left = "0";
+        copyButton.style.marginTop = "-1.5em"; // Adjust margin to move button up
         copyButton.style.zIndex = "1"; // Ensure button is above code block
         
         // Append the button to the container
