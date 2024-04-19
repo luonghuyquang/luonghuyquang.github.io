@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // Add click event listener to the button
         copyButton.addEventListener("click", function() {
             // Get the text content of the code block
-            var codeText = codeBlock.textContent;
+            var codeText = codeBlock.textContent.trim();
 
             // Create a temporary textarea element
             var textarea = document.createElement("textarea");

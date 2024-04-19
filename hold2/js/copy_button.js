@@ -29,18 +29,21 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Add click event listener to the button
         copyButton.addEventListener("click", function() {
+            // Get the text content of the code block and trim it
+            var codeText = codeBlock.textContent.trim();
+
             // Create a range and selection
             var range = document.createRange();
             var selection = window.getSelection();
 
-            // Get the text content of the code block and trim it
-            var codeText = codeBlock.textContent.trim();
-
             // Clear previous selections
             selection.removeAllRanges();
 
+            // Create a new text node with the trimmed content
+            var textNode = document.createTextNode(codeText);
+
             // Select the trimmed content of the code block
-            range.selectNodeContents(codeBlock);
+            range.selectNodeContents(textNode);
 
             // Add the range to the selection
             selection.addRange(range);
