@@ -1,27 +1,25 @@
-document.addEventListener('DOMContentLoaded', function () {
-  var codeElements = document.querySelectorAll('code');
-  codeElements.forEach(function (codeElement) {
-    // Create copy button
-    var copyButton = document.createElement('i');
-    copyButton.className = 'fa fa-clipboard copy-btn'; // Use Font Awesome classes
-    codeElement.parentNode.insertBefore(copyButton, codeElement.nextSibling);
+    // Execute the code when the DOM is ready
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get all <code> elements
+      var codeElements = document.getElementsByTagName("code");
 
-    // Initialize Clipboard.js for each copy button
-    var clipboard = new ClipboardJS(copyButton, {
-      text: function () {
-        return codeElement.textContent; // Get the code text to copy
+      // Loop through each <code> element
+      for (var i = 0; i < codeElements.length; i++) {
+        var codeElement = codeElements[i];
+
+        // Create clipboard icon element
+        var clipboardIcon = document.createElement("i");
+        clipboardIcon.className = "fa fa-clipboard clipboard-icon";
+        clipboardIcon.title = "Copy to clipboard";
+
+        // Append the clipboard icon to the <code> element
+        codeElement.appendChild(clipboardIcon);
+
+        // Initialize Clipboard.js for the current <code> element
+        new ClipboardJS(clipboardIcon, {
+          text: function(trigger) {
+            return trigger.parentNode.textContent.trim();
+          }
+        });
       }
     });
-
-    // Alert user when code is copied
-    clipboard.on('success', function (e) {
-      alert('Code copied !');
-      e.clearSelection();
-    });
-
-    // Alert user if copying fails
-    clipboard.on('error', function (e) {
-      alert(' failed!');
-    });
-  });
-});
