@@ -18,10 +18,11 @@ document.addEventListener("DOMContentLoaded", function() {
         // Create a button element
         var copyButton = document.createElement("button");
         copyButton.className = "copy-button";
-        copyButton.textContent = "Copy";
+        copyButton.textContent = "Copy code";
         copyButton.style.position = "absolute";
         copyButton.style.top = "0";
-        copyButton.style.right = "0";
+        copyButton.style.left = "0"; // Align button with left edge of container
+        copyButton.style.marginTop = "1em"; // Adjust vertical margin as needed
         copyButton.style.zIndex = "1"; // Ensure button is above code block
         
         // Append the button to the container
@@ -52,8 +53,8 @@ document.addEventListener("DOMContentLoaded", function() {
             copyButton.textContent = "Copied!";
             setTimeout(function() {
                 // Reset button text after a short delay
-                copyButton.textContent = "Copy";
-            }, 2000); // Reset after 2 seconds
+                copyButton.textContent = "Copy code";
+            }, 1000); // Reset after 1 second
         });
     });
 });
