@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function() {
             var selection = window.getSelection();
 
             // Select the content of the code block
-            range.selectNodeContents(codeBlock);
+            range.selectNodeContents(codeText);
             selection.removeAllRanges(); // Clear previous selections
             selection.addRange(range);
 
