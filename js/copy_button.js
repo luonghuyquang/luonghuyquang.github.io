@@ -7,23 +7,25 @@ document.addEventListener("DOMContentLoaded", function() {
         // Create a container div for positioning
         var container = document.createElement("div");
         container.style.position = "relative";
-        container.style.width = "fit-content";
+        container.style.display = "inline-block"; // Ensure container wraps around content
         
+        // Append the container before the code block
+        codeBlock.parentNode.insertBefore(container, codeBlock);
+        
+        // Append the code block to the container
+        container.appendChild(codeBlock);
+
         // Create a button element
         var copyButton = document.createElement("button");
         copyButton.className = "copy-button";
-        copyButton.textContent = "Copy code";
+        copyButton.textContent = "Copy";
         copyButton.style.position = "absolute";
         copyButton.style.top = "0";
         copyButton.style.right = "0";
-        copyButton.style.zIndex = "1";
+        copyButton.style.zIndex = "1"; // Ensure button is above code block
         
         // Append the button to the container
         container.appendChild(copyButton);
-
-        // Append the container to the code block's parent
-        codeBlock.parentNode.insertBefore(container, codeBlock);
-        container.appendChild(codeBlock);
 
         // Add click event listener to the button
         copyButton.addEventListener("click", function() {
@@ -50,8 +52,8 @@ document.addEventListener("DOMContentLoaded", function() {
             copyButton.textContent = "Copied!";
             setTimeout(function() {
                 // Reset button text after a short delay
-                copyButton.textContent = "Copy code";
-            }, 1000); // Reset after 1 second
+                copyButton.textContent = "Copy";
+            }, 2000); // Reset after 2 seconds
         });
     });
 });
