@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function() {
         copyButton.style.position = "absolute";
         copyButton.style.top = "0";
         copyButton.style.right = "0";
-        copyButton.style.zIndex = "1"; // Ensure button is above code block
+        //copyButton.style.zIndex = "1"; // Ensure button is above code block
         
         // Append the button to the container
         container.appendChild(copyButton);
