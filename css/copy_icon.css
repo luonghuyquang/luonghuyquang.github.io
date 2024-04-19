@@ -10,3 +10,7 @@
   padding: 0em;
   cursor: pointer;
 }
+
+code {
+  padding-right: 1.5em; /* Adjust the padding value as needed */
+}
