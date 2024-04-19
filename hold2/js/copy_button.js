@@ -7,8 +7,6 @@ document.addEventListener("DOMContentLoaded", function() {
         // Create a container div for positioning
         var container = document.createElement("div");
         container.style.position = "relative";
-        container.style.overflowY = "auto"; // Add vertical scrollbar if needed
-        container.style.maxHeight = "300px"; // Adjust max height as needed
         container.style.paddingTop = "2em"; // Adjust padding to create space for the button
         
         // Append the container before the code block
@@ -20,11 +18,11 @@ document.addEventListener("DOMContentLoaded", function() {
         // Create a button element
         var copyButton = document.createElement("button");
         copyButton.className = "copy-button";
-        copyButton.textContent = "Copy";
+        copyButton.textContent = "Copy code";
         copyButton.style.position = "absolute";
         copyButton.style.top = "0";
         copyButton.style.right = "0";
-        //copyButton.style.zIndex = "1"; // Ensure button is above code block
+        copyButton.style.zIndex = "1"; // Ensure button is above code block
         
         // Append the button to the container
         container.appendChild(copyButton);
@@ -32,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // Add click event listener to the button
         copyButton.addEventListener("click", function() {
             // Get the text content of the code block
-            var codeText = codeBlock.textContent;
+            var codeText = codeBlock.textContent.trim();
 
             // Create a range and selection
             var range = document.createRange();
@@ -53,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
             copyButton.textContent = "Copied!";
             setTimeout(function() {
                 // Reset button text after a short delay
-                copyButton.textContent = "Copy";
+                copyButton.textContent = "Copy code";
             }, 1000); // Reset after 1 second
         });
     });
