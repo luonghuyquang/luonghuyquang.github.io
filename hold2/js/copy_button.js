@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
         copyButton.addEventListener("click", function() {
             // Get the text content of the code block and trim it
             var codeText = codeBlock.textContent.trim();
+            console.log("Code Text:", codeText);
 
             // Create a range and selection
             var range = document.createRange();
@@ -44,12 +45,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
             // Select the trimmed content of the code block
             range.selectNodeContents(textNode);
+            console.log("Selected Node:", textNode);
 
             // Add the range to the selection
             selection.addRange(range);
+            console.log("Selection Range:", selection);
 
             // Execute the copy command
-            document.execCommand("copy");
+            var success = document.execCommand("copy");
+            console.log("Copy Success:", success);
 
             // Change button text to indicate successful copy
             copyButton.textContent = "Copied!";
