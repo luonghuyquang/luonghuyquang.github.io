@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
         copyButton.textContent = "Copy code";
         copyButton.style.position = "absolute";
         copyButton.style.top = "0";
-        copyButton.style.left = "0"; // Align button with left edge of container
+        copyButton.style.right = "0"; // Align button with Right edge of container
         copyButton.style.marginTop = "1em"; // Adjust vertical margin as needed
         copyButton.style.zIndex = "1"; // Ensure button is above code block
         
