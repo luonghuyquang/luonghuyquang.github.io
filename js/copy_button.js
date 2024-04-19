@@ -8,14 +8,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Initialize Clipboard.js for each copy button
     var clipboard = new ClipboardJS(copyButton, {
-      target: function (trigger) {
-        return codeElement; // Get the parent code element to copy
+      text: function () {
+        return codeElement.textContent; // Get the code text to copy
       }
     });
 
     // Alert user when code is copied
     clipboard.on('success', function (e) {
-      alert(' copied !');
+      alert('Code copied !');
       e.clearSelection();
     });
 
