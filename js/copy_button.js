@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Create copy button
     var copyButton = document.createElement('i');
     copyButton.className = 'fa fa-clipboard copy-btn'; // Use Font Awesome classes
-    codeElement.appendChild(copyButton);
+    codeElement.parentNode.insertBefore(copyButton, codeElement.nextSibling);
 
     // Initialize Clipboard.js for each copy button
     var clipboard = new ClipboardJS(copyButton, {
@@ -15,13 +15,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Alert user when code is copied
     clipboard.on('success', function (e) {
-      alert('successfully!');
+      alert(' copied !');
       e.clearSelection();
     });
 
     // Alert user if copying fails
     clipboard.on('error', function (e) {
-      alert('Copying failed!');
+      alert(' failed!');
     });
   });
 });
