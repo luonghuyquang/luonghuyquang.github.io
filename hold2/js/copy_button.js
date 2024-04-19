@@ -29,30 +29,37 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Add click event listener to the button
         copyButton.addEventListener("click", function() {
-            // Get the text content of the code block
-            var codeText = codeBlock.textContent.trim();
-
             // Create a range and selection
             var range = document.createRange();
             var selection = window.getSelection();
 
-            // Select the content of the code block
-            range.selectNodeContents(codeBlock);
-            selection.removeAllRanges(); // Clear previous selections
+            // Get the text content of the code block and trim it
+            var codeText = codeBlock.textContent.trim();
+
+            // Create a new text node with the trimmed content
+            var textNode = document.createTextNode(codeText);
+
+            // Clear previous selections
+            selection.removeAllRanges();
+
+            // Select the text node
+            range.selectNodeContents(textNode);
+
+            // Add the range to the selection
             selection.addRange(range);
 
             // Execute the copy command
             document.execCommand("copy");
 
-            // Clear the selection
-            selection.removeAllRanges();
-            
             // Change button text to indicate successful copy
             copyButton.textContent = "Copied!";
             setTimeout(function() {
                 // Reset button text after a short delay
                 copyButton.textContent = "Copy code";
             }, 1000); // Reset after 1 second
+
+            // Clear the selection
+            selection.removeAllRanges();
         });
     });
 });
