@@ -30,6 +30,8 @@
         target: function(trigger) {
           return trigger.previousSibling;
         }
+      }).on("success", function(e) {
+        e.clearSelection(); // Clear the selection after successful copy
       });
     }
   });
