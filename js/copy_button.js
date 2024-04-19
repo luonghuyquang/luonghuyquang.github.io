@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // Create a container div for positioning
         var container = document.createElement("div");
         container.style.position = "relative";
-        container.style.display = "inline-flex"; // Ensure container wraps tightly around content
+        container.style.paddingTop = "2em"; // Adjust padding to create space for the button
         
         // Append the container before the code block
         codeBlock.parentNode.insertBefore(container, codeBlock);
@@ -21,8 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
         copyButton.textContent = "Copy code";
         copyButton.style.position = "absolute";
         copyButton.style.top = "0";
-        copyButton.style.left = "0";
-        copyButton.style.marginTop = "-1.5em"; // Adjust margin to move button up
+        copyButton.style.right = "0";
         copyButton.style.zIndex = "1"; // Ensure button is above code block
         
         // Append the button to the container
@@ -31,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // Add click event listener to the button
         copyButton.addEventListener("click", function() {
             // Get the text content of the code block
-            var codeText = codeBlock.textContent;
+            var codeText = codeBlock.textContent.trim();
 
             // Create a temporary textarea element
             var textarea = document.createElement("textarea");
