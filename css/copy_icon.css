@@ -1,7 +1,17 @@
+.clipboard-container {
+  position: relative;
+  display: inline-block;
+}
+
 .clipboard-icon {
   position: absolute;
-  top: 0;
-  right: 0;
-  margin: 5px;
+  top: 5px;
+  right: 5px;
   cursor: pointer;
+  z-index: 1;
+}
+
+.clipboard-container code {
+  position: relative;
+  z-index: 0;
 }
