@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Create a button element
     var copyButton = document.createElement("button");
     copyButton.className = "copy-button";
-    copyButton.innerHTML = '<i class="fa-regular fa-copy"></i>';
+    copyButton.innerHTML = '<i class="fa fa-copy"></i>';
 
     // Append the button to the container
     container.appendChild(copyButton);
@@ -46,10 +46,10 @@ document.addEventListener('DOMContentLoaded', function () {
       document.body.removeChild(textarea);
 
       // Change button text to indicate successful copy
-      copyButton.innerHTML = '<i class="fa-regular fa-check"></i>';
+      copyButton.innerHTML = '<i class="fa fa-check"></i>';
       setTimeout(function () {
         // Reset button text after a short delay
-        copyButton.innerHTML = '<i class="fa-regular fa-copy"></i>';
+        copyButton.innerHTML = '<i class="fa fa-copy"></i>';
       }, 1000); // Reset after 1 second
     });
   });
