@@ -34,16 +34,16 @@ document.addEventListener('DOMContentLoaded', function () {
       textarea.value = codeText;
 
       // Append the textarea to the document body
-      document.body.appendChild(codeText);
+      document.body.appendChild(textarea);
 
       // Select the text inside the textarea
-      codeText.select();
+      textarea.select();
 
       // Execute the copy command
       document.execCommand("copy");
 
       // Remove the temporary textarea
-      document.body.removeChild(codeText);
+      document.body.removeChild(textarea);
 
       // Change button text to indicate successful copy
       copyButton.innerHTML = '<i class="fa fa-check"></i>';
