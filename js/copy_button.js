@@ -27,13 +27,30 @@ document.addEventListener('DOMContentLoaded', function () {
     // Add click event listener to the button
     copyButton.addEventListener("click", function () {
       var codeText = codeBlock.textContent.trim();
-      navigator.clipboard.writeText(codeText)
-          .then(function() {
-              console.log('Text copied to clipboard successfully');
+      // If browser supports clipboard API, use the navigator.clipboard
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        // Copy the string codeText to clipboard directly
+        navigator.clipboard.writeText(codeText)
+          .then(function () {
+            console.log('Text copied to clipboard successfully');
           })
-          .catch(function(err) {
-          console.error('Unable to copy text to clipboard: ', err);
+          .catch(function (err) {
+            console.error('Unable to copy text to clipboard: ', err);
           });
+      } else {
+        // Fallback method using textarea for unsupported browsers
+        // Create a temporary element named textarea
+        var textarea = document.createElement("textarea");
+        textarea.value = codeText;
+        // Append the textarea to the document body
+        document.body.appendChild(textarea);
+        // Select the text inside the textarea
+        textarea.select();
+        // Execute the copy command
+        document.execCommand("copy");
+        // Remove the temporary textarea
+        document.body.removeChild(textarea);
+      }
       // Change button text to indicate successful copy
       copyButton.innerHTML = '<i class="fa fa-check"></i>';
       setTimeout(function () {
