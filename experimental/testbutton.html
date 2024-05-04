@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quang.luong@student.hamk.fi</title>
+    <style>
+        .code-container {
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+
+        .window {
+            width: auto;
+            height: auto;
+            border: 2px solid #f0f0f0;
+            border-radius: 5px;
+            position: relative;
+            margin: 10px auto;
+        }
+
+        .title-bar {
+            background-color: #f0f0f0;
+            height: auto;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            padding: 10px;
+            cursor: move;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: medium;
+            display: flex;
+        /*
+            justify-content: space-between;
+        */
+            justify-content:flex-end;
+        }
+        code {
+            white-space: pre-line;
+        }
+    </style>
+</head>
+
+<body>
+    This is the first code to prepare your Windows computer for study.
+    <div class="window">
+        <div class="title-bar">
+            <button onclick="copyCode(this)">Copy Code</button>
+        </div>
+        <div class="code-container">
+            <code>print("HAMK")
+                print("1")
+                print("2")
+                print("3")
+            </code>
+        </div>
+    </div>
+    This is the second code.
+    <div class="window">
+        <div class="title-bar">
+            <button onclick="copyCode(this)">Copy Code</button>
+        </div>
+        <div class="code-container">
+            <code>print("Computer Applications")
+                print("4")
+            </code>
+        </div>
+    </div>
+    Happy Coding!
+    <div class="window">
+        <div class="title-bar">
+            <button onclick="copyCode(this)">Copy Code</button>
+        </div>
+        <div class="code-container">
+            <code>code --install-extension ms-vscode.powershell
+                code --install-extension vsls-contrib.gistfs
+                code --install-extension hashicorp.terraform
+                code --install-extension ms-vscode-remote.remote-containers
+                code --install-extension ms-azuretools.vscode-docker
+                code --install-extension ms-vscode-remote.vscode-remote-extensionpack
+                code --install-extension GitHub.copilot-nightly
+                code --install-extension GitHub.copilot-labs
+            </code>
+        </div>
+    </div>
+    <script>
+        function copyCode(button) {
+            // Traverse up the DOM to find the parent .window div
+            var windowDiv = button.closest('.window');
+            // Find the <code> element within the same .window div
+            var codeElement = windowDiv.querySelector('code');
+            //var codeContent = codeElement.textContent.trim(); // Retrieve text content without leading/trailing spaces
+            var range = document.createRange();
+            var selection = window.getSelection();
+            range.selectNodeContents(codeElement);
+            selection.removeAllRanges(); // Clear previous selections
+            selection.addRange(range);
+            document.execCommand("copy");
+            selection.removeAllRanges(); // Clear the selection
+
+            // Change button text to "Copied" temporarily (but keep it active, no harm)
+            button.innerText = "Copied";
+
+            // After 1 second, revert back to "Copy Code"
+            setTimeout(function () {
+                button.innerText = "Copy Code";
+            }, 1000);
+        }
+
+    </script>
+
+</body>
+
+</html>
